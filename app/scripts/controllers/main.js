@@ -8,10 +8,7 @@
  * Controller of the vkHelperApp
  */
 angular.module('vkHelperApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $firebase) {
+    //var myFirebaseRef = new Firebase("https://torid-fire-4550.firebaseio.com/");
+    console.log($firebase);
   });
