@@ -2,13 +2,23 @@
 
 /**
  * @ngdoc function
- * @name vkHelperApp.controller:MainCtrl
+ * @name vkHelperApp.controller:$scope
  * @description
- * # MainCtrl
+ * # $scope
  * Controller of the vkHelperApp
  */
-angular.module('vkHelperApp')
-  .controller('MainCtrl', function ($scope, $firebase) {
+
+app.controller('MainCtrl', function ($scope, vkontakteService, $location, $firebase) {
     //var myFirebaseRef = new Firebase("https://torid-fire-4550.firebaseio.com/");
-    console.log($firebase);
+
+  $scope.VK = vkontakteService;
+
+  $scope.VK.init();
+
+
+
+  if (~$location.absUrl().indexOf('access_token')) {
+    $scope.VK.setCredentials($location.url());
+    $location.url('');
+  }
   });

@@ -10,7 +10,9 @@
     "angular-route": "^1.3.0",
     "angular-sanitize": "^1.3.0",
     "firebase": "2.0.4",
-    "angularfire": "latest"
+    "angularfire": "latest",
+    "angular-local-storage": "latest",
+    "angular-ui-router": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.0",

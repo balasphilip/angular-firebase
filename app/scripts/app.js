@@ -8,27 +8,32 @@
  *
  * Main module of the application.
  */
-angular
+ var app = angular
   .module('vkHelperApp', [
     'ngAnimate',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'firebase'
+    'ui.router',
+    'firebase',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+  .config(function ($stateProvider, $urlRouterProvider, $routeProvider, $locationProvider) {
+
+    $stateProvider
+      .state('main', {
+        url: "/main",
+        templateUrl: "views/main.html",
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+
+      .state('backup', {
+        url: "/backup",
+        templateUrl: "views/backup.html",
+        controller: 'BackupCtrl'
       });
+
+    $urlRouterProvider.otherwise("/main");
 
     $locationProvider.html5Mode({
       enabled: true,

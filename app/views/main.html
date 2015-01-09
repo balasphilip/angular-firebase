@@ -1,23 +1,11 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="container">
+  <div ng-show="VK.user.isLoggedIn">
+      <p>{{VK.user.first_name}} {{VK.user.last_name}}</p>
+      <span>{{VK.user.status}}</span><br/>
+    <img ng-src="{{VK.user.photo}}" alt=""/>
+    <div>Click <a ui-sref="backup">Next</a> and go to Back Up page</div>
+  </div>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <button ng-click="VK.oAuthLogin()" ng-hide="VK.user.isLoggedIn">Vkontakte log in</button>
+  <button ng-click="VK.oAuthLogout()" ng-show="VK.user.isLoggedIn">Vkontakte log out</button>
 </div>
