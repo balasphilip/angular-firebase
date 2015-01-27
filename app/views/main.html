@@ -6,6 +6,9 @@
     <div>Click <a ui-sref="backup">Next</a> and go to Back Up page</div>
   </div>
 
-  <button ng-click="VK.oAuthLogin()" ng-hide="VK.user.isLoggedIn">Vkontakte log in</button>
+  <button ng-click="try()" ng-hide="VK.user.isLoggedIn">Vkontakte log in</button>
   <button ng-click="VK.oAuthLogout()" ng-show="VK.user.isLoggedIn">Vkontakte log out</button>
+
+
+  <button ng-click="sign.logoutUser()">Log out</button>
 </div>

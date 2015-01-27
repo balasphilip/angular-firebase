@@ -8,12 +8,24 @@
  * Controller of the vkHelperApp
  */
 
-app.controller('MainCtrl', function ($scope, vkontakteService, $location, $firebase) {
-    //var myFirebaseRef = new Firebase("https://torid-fire-4550.firebaseio.com/");
-
+app.controller('MainCtrl', function ($scope, $rootScope, $state, vkontakteService, $location, signService) {
   $scope.VK = vkontakteService;
+  $scope.sign = signService;
 
-  $scope.VK.init();
+  var authObj = $scope.sign.getAuthObj();
+
+  authObj.$onAuth(function(authData) {
+    if (!authData) {
+      $state.go('login');
+    }
+  });
+
+  $scope.try = function () {
+    $rootScope.sync.$set({foo: "bar"});
+  };
+
+
+  //$scope.VK.init();
 
 
 

@@ -21,6 +21,18 @@
   .config(function ($stateProvider, $urlRouterProvider, $routeProvider, $locationProvider) {
 
     $stateProvider
+      .state('login', {
+        url: "/login",
+        templateUrl: "views/login.html",
+        controller: 'LoginCtrl'
+      })
+
+      .state('signup', {
+        url: "/signup",
+        templateUrl: "views/signup.html",
+        controller: 'SignupCtrl'
+      })
+
       .state('main', {
         url: "/main",
         templateUrl: "views/main.html",
@@ -40,4 +52,9 @@
       requireBase: false
     });
 
+  })
+  .run(function ($rootScope, $firebase) {
+    $rootScope.myFirebaseRef = new Firebase("https://torid-fire-4550.firebaseio.com/");
+    $rootScope.sync = $firebase($rootScope.myFirebaseRef);
+    $rootScope.syncUsers = $firebase($rootScope.myFirebaseRef.child('/users'));
   });

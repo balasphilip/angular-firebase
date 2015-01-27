@@ -42,8 +42,8 @@ app.factory('vkontakteService', function ($http, $location, $window, localStorag
      * Redirect user to VKontakte authorize page and back to home page
      */
     oAuthLogin: function () {
-      $window.location.href = CONFIG.vk.url + '?' + 'client_id=' + CONFIG.vk.client_id + '&' + 'scope=' + CONFIG.vk.scope + '&' +
-      'redirect_uri=' + $location.absUrl() + '&' + 'display=popup&' + 'v=' + CONFIG.vk.version + '&response_type=token';
+      //$window.location.href = CONFIG.vk.url + '?' + 'client_id=' + CONFIG.vk.client_id + '&' + 'scope=' + CONFIG.vk.scope + '&' +
+      //'redirect_uri=' + $location.absUrl() + '&' + 'display=popup&' + 'v=' + CONFIG.vk.version + '&response_type=token';
     },
 
     /**
@@ -66,7 +66,7 @@ app.factory('vkontakteService', function ($http, $location, $window, localStorag
       credentials.userToken = data.slice(data.indexOf('=') + 1, data.indexOf('&'));
       credentials.userId = data.slice(data.indexOf('id') + 3, data.indexOf('&email'));
       credentials.userEmail = data.slice(data.lastIndexOf('=') + 1);
-      localStorageService.set('user', JSON.stringify(this.getCredentials()));
+      //localStorageService.set('user', JSON.stringify(this.getCredentials()));
     },
 
     getCredentials: function () {

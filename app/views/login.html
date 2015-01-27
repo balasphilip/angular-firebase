@@ -1,0 +1,18 @@
+<form class="box login" name="loginForm" ng-submit="login(loginForm.$valid)" novalidate>
+  <fieldset class="boxBody">
+    <label>Email</label>
+    <input type="text" name="email" required ng-model="user.email" ng-pattern="/^\w+@[a-z0-9A-Z_]+?\.[a-zA-Z]{2,3}$/" tabindex="1" placeholder="your@mail.com">
+    <span ng-show="loginForm.email.$error.pattern && !signupForm.email.$pristine" class="help-block">Enter correct email.</span>
+    <label>Password</label>
+    <input type="password" name="password" required ng-model="user.password" tabindex="2">
+    <span ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Password is required</span>
+  </fieldset>
+  <footer>
+    <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+    <button class="btnLogin" type="submit" ng-disabled="loginForm.$invalid">Login</button>
+    <div ng-show="isAuthFailed">{{isAuthFailed}}</div>
+  </footer>
+</form>
+<footer id="main">
+  <a href="http://wwww.cssjunction.com">Simple Login Form (HTML5/CSS3 Coded) by CSS Junction</a> | <a href="http://www.premiumpixels.com">PSD by Premium Pixels</a>
+</footer>

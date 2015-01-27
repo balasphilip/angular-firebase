@@ -1,0 +1,23 @@
+<form class="box login" name="signupForm" ng-submit="saveNewUser(signupForm)" novalidate>
+  <fieldset class="boxBody">
+    <label>Email</label>
+    <input type="text" name="email" required ng-model="user.mail" ng-pattern="/^\w+@[a-z0-9A-Z_]+?\.[a-zA-Z]{2,3}$/" tabindex="1" placeholder="your@mail.com">
+    <span ng-show="signupForm.email.$error.pattern && !signupForm.email.$pristine" class="help-block">Enter correct email.</span>
+
+    <label>Password</label>
+    <input type="password" name="password" ng-minlength="6" required ng-model="user.password" tabindex="2">
+    <span ng-show="signupForm.password.$error.minlength" class="help-block">Password should have at least 6 symbols</span>
+
+    <label>Repeat password</label>
+    <input type="password" class="signup-input" name="repeatPass" required ng-change="signupForm.$invalid = user.password !== user.repeat && !signupForm.repeatPass.$pristine" ng-class="{ 'ng-invalid' : user.password !== user.repeat && !signupForm.repeatPass.$pristine }" ng-model="user.repeat" tabindex="3">
+    <span ng-show="user.password !== user.repeat && !signupForm.repeatPass.$pristine" class="help-block">Passwords should be coincident</span>
+
+  </fieldset>
+  <footer>
+    <button class="btnLogin" type="submit" ng-disabled="signupForm.$invalid">Sign up</button>
+    <div ng-show="sign.action.error">{{sign.action.error}}</div>
+  </footer>
+</form>
+<footer id="main">
+  <a href="http://wwww.cssjunction.com">Simple Login Form (HTML5/CSS3 Coded) by CSS Junction</a> | <a href="http://www.premiumpixels.com">PSD by Premium Pixels</a>
+</footer>
